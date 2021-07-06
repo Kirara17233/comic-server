@@ -1,0 +1,1 @@
+$env:DEBUG='comic-server:*'; yarn devstart
