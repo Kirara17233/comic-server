@@ -62,7 +62,7 @@ router.get('/chapters/:id', function(req, res, next) {
   knex('coco_chapter').select('id', 'name')
   .where('comic_id', '=', req.params.id)
   .orderBy('id', 'desc')
-  .then((rows) => {
+  .then(rows => {
     res.send(rows);
   });
 });
@@ -74,7 +74,7 @@ router.get('/chapter/:comic_id/:id', function(req, res, next) {
     comic_id: req.params.comic_id,
     id: req.params.id
   })
-  .then((rows) => {
+  .then(rows => {
     res.send(rows[0]);
   });
 });
@@ -83,7 +83,7 @@ router.get('/search/:name', function(req, res, next) {
   const knex = require('knex')(options);
   knex.from('coco').select()
   .where('name', 'like', '%' + req.params.name + '%')
-  .then((rows) => {
+  .then(rows => {
     res.send(rows);
   });
 });
