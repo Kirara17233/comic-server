@@ -1,0 +1,13 @@
+doctype html
+html(lang='zh-CN')
+  head
+    meta(charset='UTF-8')
+    link(rel='icon', href='/favicon.ico')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    script(type='module', crossorigin, src='/assets/index.ce0d2287.js')
+    link(rel='modulepreload', href='/assets/vendor.f8ef8837.js')
+  body
+    div(id='counter') Counter: {{ counter }}
+    h1= title
+    p Welcome to #{title}
