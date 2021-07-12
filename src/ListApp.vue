@@ -4,7 +4,10 @@
         筛选
     </div>
     <div>
-      <ul id="list">
+      <ul>
+        <li v-for="comic in comics">
+          <Comic :comic="comic" />
+        </li>
       </ul>
     </div>
   </div>
@@ -13,18 +16,15 @@
 
 <script setup>
 import Comic from './components/Comic.vue'
+import { ref } from "vue";
+import axios from 'axios'
 
-const ListRendering = {
-  data() {
-    return {
-      comics: axios.get('/public/data.json')
-      .then(response => response.data.list)
-    }
-  }
-};
-
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
+const nPages = ref(0)
+const comics = ref(null)
+axios.get('http://kira7.com/data/page/30/1').then(response => {
+  nPages.value = response.data.nPages
+  comics.value = response.data.list
+})
 </script>
 
 <style>

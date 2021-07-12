@@ -1,23 +1,24 @@
 <template>
-    <a :href="id">
-    <img class="comic-pic" :src="comic_pic">
-    <span>第35话</span>
-    </a>
-    <a href="/19751/">皇女，刻印反叛者</a>
-    <span>2021-06-30</span>
+  <a :href="comic.id">
+    <img class="comic-pic" :src="'https://res.cocomanhua.com/comic/' + comic.id + '/cover.jpg'">
+    <span>{{ comic.latest }}</span>
+  </a>
+  <a :href="comic.id">{{ comic.name }}</a>
+  <span>{{ comic.update.substr(0, 10) }}</span>
 </template>
 
 <script setup>
-import { defineProps, reactive } from 'vue'
+import { defineProps } from 'vue'
 
 defineProps({
-  comic_id: Number
-})
-
-const id = '/' + comic_id + '/'
-
-const state = reactive({
-  id: '/' + comic_id + '/',
-  pic_url: "https://res.cocomanhua.com/comic" + id + "cover.jpg"
+  comic: Object
 })
 </script>
+
+<style scoped>
+.comic-pic {
+  width: 150px;
+  height:200px;
+  object-fit: cover;
+}
+</style>
